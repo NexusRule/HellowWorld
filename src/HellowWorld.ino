@@ -1,18 +1,24 @@
-/*
- * Project HellowWorld
- * Description:
- * Author:
- * Date:
- */
+SYSTEM_MODE(MANUAL);
+SYSTEM_THREAD(ENABLED);
+//setting the integer 'value'
+uint16_t value;
 
-// setup() runs once, when the device is first turned on.
 void setup() {
-  // Put initialization like pinMode and begin functions here.
-
+  //asigning the ports
+  pinMode(D5, OUTPUT);
+  pinMode(A1, INPUT);
 }
 
-// loop() runs over and over again, as quickly as it can execute.
-void loop() {
-  // The core of your code will likely live here.
-
+void loop() { 
+  //reading the preset integer
+  value = analogRead(A1);
+  //actually using the integer to make the LED blink
+  //(in accordance with the pentiometer)
+  delay(value);
+  digitalWrite(D5, HIGH);
+  delay(value);
+  digitalWrite(D5, LOW);
+  //printing the stuffs in output
+  Serial.println(value);
+  Serial.begin(9600);
 }
